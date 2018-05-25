@@ -199,7 +199,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
-    <Compile Include="Controllers\SettingsController.cs" />
+    <Compile Include="Controllers\Settings\FormatsController.cs" />
+    <Compile Include="Controllers\Settings\RolesController.cs" />
+    <Compile Include="Controllers\Settings\StructuresController.cs" />
+    <Compile Include="Controllers\Settings\TiersController.cs" />
+    <Compile Include="CustomLocationViewEngine.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -214,6 +218,10 @@
     <Compile Include="Migrations\201805250805101_AlterPeople.cs" />
     <Compile Include="Migrations\201805250805101_AlterPeople.Designer.cs">
       <DependentUpon>201805250805101_AlterPeople.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805250856271_AddSettings.cs" />
+    <Compile Include="Migrations\201805250856271_AddSettings.Designer.cs">
+      <DependentUpon>201805250856271_AddSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -286,7 +294,26 @@
     <Content Include="Views\People\Details.cshtml" />
     <Content Include="Views\People\Edit.cshtml" />
     <Content Include="Views\People\Index.cshtml" />
-    <Content Include="Views\Settings\Index.cshtml" />
+    <Content Include="Views\Settings\Tiers\Create.cshtml" />
+    <Content Include="Views\Settings\Tiers\Delete.cshtml" />
+    <Content Include="Views\Settings\Tiers\Details.cshtml" />
+    <Content Include="Views\Settings\Tiers\Edit.cshtml" />
+    <Content Include="Views\Settings\Tiers\Index.cshtml" />
+    <Content Include="Views\Settings\Structures\Create.cshtml" />
+    <Content Include="Views\Settings\Structures\Delete.cshtml" />
+    <Content Include="Views\Settings\Structures\Details.cshtml" />
+    <Content Include="Views\Settings\Structures\Edit.cshtml" />
+    <Content Include="Views\Settings\Structures\Index.cshtml" />
+    <Content Include="Views\Settings\Formats\Create.cshtml" />
+    <Content Include="Views\Settings\Formats\Delete.cshtml" />
+    <Content Include="Views\Settings\Formats\Details.cshtml" />
+    <Content Include="Views\Settings\Formats\Edit.cshtml" />
+    <Content Include="Views\Settings\Formats\Index.cshtml" />
+    <Content Include="Views\Settings\Roles\Create.cshtml" />
+    <Content Include="Views\Settings\Roles\Delete.cshtml" />
+    <Content Include="Views\Settings\Roles\Details.cshtml" />
+    <Content Include="Views\Settings\Roles\Edit.cshtml" />
+    <Content Include="Views\Settings\Roles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -319,6 +346,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805250805101_AlterPeople.resx">
       <DependentUpon>201805250805101_AlterPeople.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805250856271_AddSettings.resx">
+      <DependentUpon>201805250856271_AddSettings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

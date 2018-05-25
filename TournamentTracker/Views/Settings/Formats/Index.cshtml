@@ -1,0 +1,38 @@
+﻿@model IEnumerable<DataLayer.Format>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Tournament Formats</h2>
+<p>
+    Each of these formats is defined by a different pool of cards and offers a different play experience.
+    Each format will also be accompanied by a format-specific Holocron document, which - in combination
+    with the game's core rules - will provide all the information you need to construct format-legal decks.
+</p>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

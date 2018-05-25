@@ -1,0 +1,40 @@
+﻿@model IEnumerable<DataLayer.Tier>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Tournament Tiers</h2>
+<p>
+    FFG’s OP events are broken into three tiers of play. These tiers serve to establish the
+    expectations of a Star Wars: Destiny tournament. Expectations are not intended to exclude
+    people from participating, but to communicate the experience that players can expect from an
+    event. Organizers of unofficial tournaments are encouraged to utilize the Relaxed tier, unless
+    their tournament is specifically aimed at competitive players.
+</p>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

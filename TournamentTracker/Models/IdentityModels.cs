@@ -31,5 +31,13 @@ namespace TournamentTracker.Models
         }
 
         public System.Data.Entity.DbSet<DataLayer.Person> People { get; set; }
+
+        public System.Data.Entity.DbSet<DataLayer.Tier> Tiers { get; set; }
+
+        public System.Data.Entity.DbSet<DataLayer.Structure> Structures { get; set; }
+
+        public System.Data.Entity.DbSet<DataLayer.Format> Formats { get; set; }
+
+        public System.Data.Entity.DbSet<DataLayer.Role> PRoles { get; set; }
     }
 }

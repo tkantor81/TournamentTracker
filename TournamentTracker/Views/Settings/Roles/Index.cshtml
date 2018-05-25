@@ -1,0 +1,40 @@
+﻿@model IEnumerable<DataLayer.Role>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Tournament Participant Roles</h2>
+<p>
+    Every person present at a tournament is a participant. Participants fulfill specific roles based on
+    their responsibilities to the tournament. All participants share the responsibility of acting in a
+    respectful manner toward one another. Please read the Fundamental Event Document for a
+    detailed explanation of these roles. Participant leader roles are: organizer, marshal, and judge.
+    Other roles include player and spectator.
+</p>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
