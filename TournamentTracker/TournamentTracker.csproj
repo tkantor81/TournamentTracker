@@ -199,6 +199,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -209,6 +210,10 @@
     <Compile Include="Migrations\201805250732337_AddPeople.cs" />
     <Compile Include="Migrations\201805250732337_AddPeople.Designer.cs">
       <DependentUpon>201805250732337_AddPeople.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805250805101_AlterPeople.cs" />
+    <Compile Include="Migrations\201805250805101_AlterPeople.Designer.cs">
+      <DependentUpon>201805250805101_AlterPeople.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -281,6 +286,7 @@
     <Content Include="Views\People\Details.cshtml" />
     <Content Include="Views\People\Edit.cshtml" />
     <Content Include="Views\People\Index.cshtml" />
+    <Content Include="Views\Settings\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -310,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805250732337_AddPeople.resx">
       <DependentUpon>201805250732337_AddPeople.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805250805101_AlterPeople.resx">
+      <DependentUpon>201805250805101_AlterPeople.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
