@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TournamentTracker.Helpers;
 using TournamentTracker.Models;
 
 namespace TournamentTracker.Controllers.Events
@@ -17,7 +18,19 @@ namespace TournamentTracker.Controllers.Events
         }
 
         [HttpPost]
-        public ActionResult Index(Tournament tournament)
+        [MultipleButton(Name = "action", Argument = "AddParticipant")]
+        public ActionResult AddParticipant(Tournament tournament)
+        {
+            if (ModelState.IsValid)
+            {
+                //TODO add participant
+            }
+            return View("Index", tournament);
+        }
+
+        [HttpPost]
+        [MultipleButton(Name = "action", Argument = "Start")]
+        public ActionResult Start(Tournament tournament)
         {
             if (ModelState.IsValid)
             {

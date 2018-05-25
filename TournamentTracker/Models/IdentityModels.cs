@@ -30,16 +30,18 @@ namespace TournamentTracker.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<Person> People { get; set; }
+        public System.Data.Entity.DbSet<TournamentTracker.Models.Person> People { get; set; }
 
-        public System.Data.Entity.DbSet<Tier> Tiers { get; set; }
+        public System.Data.Entity.DbSet<TournamentTracker.Models.Tier> Tiers { get; set; }
 
-        public System.Data.Entity.DbSet<Structure> Structures { get; set; }
+        public System.Data.Entity.DbSet<TournamentTracker.Models.Structure> Structures { get; set; }
 
-        public System.Data.Entity.DbSet<Format> Formats { get; set; }
+        public System.Data.Entity.DbSet<TournamentTracker.Models.Format> Formats { get; set; }
 
-        public System.Data.Entity.DbSet<Role> PRoles { get; set; }
+        public System.Data.Entity.DbSet<TournamentTracker.Models.Role> Roles { get; set; }
 
-        public System.Data.Entity.DbSet<Tournament> Tournaments { get; set; }
+        public System.Data.Entity.DbSet<TournamentTracker.Models.Tournament> Tournaments { get; set; }
+
+        public System.Data.Entity.DbSet<TournamentTracker.Models.Participant> Participants { get; set; }
     }
 }

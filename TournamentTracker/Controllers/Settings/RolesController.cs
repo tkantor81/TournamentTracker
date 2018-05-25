@@ -18,7 +18,7 @@ namespace TournamentTracker.Controllers.Settings
         // GET: Roles
         public ActionResult Index()
         {
-            return View(db.PRoles.ToList());
+            return View(db.Roles.ToList());
         }
 
         // GET: Roles/Details/5
@@ -28,7 +28,7 @@ namespace TournamentTracker.Controllers.Settings
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = db.PRoles.Find(id);
+            Role role = db.Roles.Find(id);
             if (role == null)
             {
                 return HttpNotFound();
@@ -51,7 +51,7 @@ namespace TournamentTracker.Controllers.Settings
         {
             if (ModelState.IsValid)
             {
-                db.PRoles.Add(role);
+                db.Roles.Add(role);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -66,7 +66,7 @@ namespace TournamentTracker.Controllers.Settings
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = db.PRoles.Find(id);
+            Role role = db.Roles.Find(id);
             if (role == null)
             {
                 return HttpNotFound();
@@ -97,7 +97,7 @@ namespace TournamentTracker.Controllers.Settings
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = db.PRoles.Find(id);
+            Role role = db.Roles.Find(id);
             if (role == null)
             {
                 return HttpNotFound();
@@ -110,8 +110,8 @@ namespace TournamentTracker.Controllers.Settings
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Role role = db.PRoles.Find(id);
-            db.PRoles.Remove(role);
+            Role role = db.Roles.Find(id);
+            db.Roles.Remove(role);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
