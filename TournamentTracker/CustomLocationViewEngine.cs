@@ -10,7 +10,9 @@ namespace TournamentTracker
     {
         private static string[] Locations = new[] {
             "~/Views/Settings/{1}/{0}.cshtml",
-            "~/Views/Settings/{1}/{0}.vbhtml"
+            "~/Views/Settings/{1}/{0}.vbhtml",
+            "~/Views/Events/{1}/{0}.cshtml",
+            "~/Views/Events/{1}/{0}.vbhtml"
         };
 
         public CustomLocationViewEngine()

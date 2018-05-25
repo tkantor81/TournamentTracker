@@ -196,6 +196,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Events\TournamentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
@@ -223,10 +224,27 @@
     <Compile Include="Migrations\201805250856271_AddSettings.Designer.cs">
       <DependentUpon>201805250856271_AddSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805251145054_AddTournament.cs" />
+    <Compile Include="Migrations\201805251145054_AddTournament.Designer.cs">
+      <DependentUpon>201805251145054_AddTournament.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805251250229_AlterTournament.cs" />
+    <Compile Include="Migrations\201805251250229_AlterTournament.Designer.cs">
+      <DependentUpon>201805251250229_AlterTournament.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Format.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Match.cs" />
+    <Compile Include="Models\Participant.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Round.cs" />
+    <Compile Include="Models\Structure.cs" />
+    <Compile Include="Models\Tier.cs" />
+    <Compile Include="Models\Tournament.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -255,7 +273,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -314,6 +334,7 @@
     <Content Include="Views\Settings\Roles\Details.cshtml" />
     <Content Include="Views\Settings\Roles\Edit.cshtml" />
     <Content Include="Views\Settings\Roles\Index.cshtml" />
+    <Content Include="Views\Events\Tournament\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -332,12 +353,6 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
-      <Project>{69c8323b-56e5-4a2a-a936-6aae13977ece}</Project>
-      <Name>DataLayer</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Migrations\201805250531431_InitialCreate.resx">
       <DependentUpon>201805250531431_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
@@ -349,6 +364,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805250856271_AddSettings.resx">
       <DependentUpon>201805250856271_AddSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805251145054_AddTournament.resx">
+      <DependentUpon>201805251145054_AddTournament.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805251250229_AlterTournament.resx">
+      <DependentUpon>201805251250229_AlterTournament.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
