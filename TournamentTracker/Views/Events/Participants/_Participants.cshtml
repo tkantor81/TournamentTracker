@@ -22,7 +22,7 @@
             </td>
             <td>
                 @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                <a href="" class="deleteParticipant" data-ID="@item.ID">Delete</a>
+                <button type="button" class="btn btn-default deleteParticipant" data-ID="@item.ID">Delete</button>
             </td>
         </tr>
     }

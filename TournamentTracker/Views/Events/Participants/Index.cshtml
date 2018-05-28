@@ -37,7 +37,6 @@
 
             // Attach the event handler for the selector, now and in the future
             $(document).on("click", ".deleteParticipant", {}, function (event) {
-                event.preventDefault();
                 $.ajax({
                     url: "/Participants/DeleteParticipant?participantID=" + $(this).attr("data-ID"),
                     type: "GET",
