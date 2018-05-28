@@ -1,0 +1,30 @@
+﻿@model IEnumerable<TournamentTracker.Models.Participant>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.Raw("Name")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Person.Email)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.Raw(item.Person.FirstName + " " + item.Person.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Person.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                <a href="" class="deleteParticipant" data-ID="@item.ID">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>

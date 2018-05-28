@@ -12,10 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.Raw("Name")
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Email)
@@ -26,10 +23,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
+            @Html.Raw(item.FirstName + " " + item.LastName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Email)

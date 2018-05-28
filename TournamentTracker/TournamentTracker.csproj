@@ -196,7 +196,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\Events\ParticipantController.cs" />
+    <Compile Include="Controllers\Events\ParticipantsController.cs" />
     <Compile Include="Controllers\Events\TournamentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -236,6 +236,14 @@
     <Compile Include="Migrations\201805251426217_AddParticipant.cs" />
     <Compile Include="Migrations\201805251426217_AddParticipant.Designer.cs">
       <DependentUpon>201805251426217_AddParticipant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805272124163_AlterTournament1.cs" />
+    <Compile Include="Migrations\201805272124163_AlterTournament1.Designer.cs">
+      <DependentUpon>201805272124163_AlterTournament1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805272143233_AlterTournament2.cs" />
+    <Compile Include="Migrations\201805272143233_AlterTournament2.Designer.cs">
+      <DependentUpon>201805272143233_AlterTournament2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -342,7 +350,9 @@
     <Content Include="Views\Settings\Roles\Edit.cshtml" />
     <Content Include="Views\Settings\Roles\Index.cshtml" />
     <Content Include="Views\Events\Tournament\Index.cshtml" />
-    <Content Include="Views\Events\Participant\Index.cshtml" />
+    <Content Include="Views\Events\Participants\_Participants.cshtml" />
+    <Content Include="Views\Events\Participants\Details.cshtml" />
+    <Content Include="Views\Events\Participants\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -381,6 +391,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805251426217_AddParticipant.resx">
       <DependentUpon>201805251426217_AddParticipant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805272124163_AlterTournament1.resx">
+      <DependentUpon>201805272124163_AlterTournament1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805272143233_AlterTournament2.resx">
+      <DependentUpon>201805272143233_AlterTournament2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

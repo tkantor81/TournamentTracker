@@ -10,33 +10,25 @@ namespace TournamentTracker.Controllers.Events
 {
     public class TournamentController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         // GET: Tournament
         public ActionResult Index()
         {
-            var tournament = new Tournament();
+            Tournament tournament = Tournament.Get();
             return View(tournament);
         }
 
         [HttpPost]
-        [MultipleButton(Name = "action", Argument = "AddParticipant")]
-        public ActionResult AddParticipant(Tournament tournament)
+        [MultipleButton(Name = "action", Argument = "Create")]
+        public ActionResult Create(Tournament tournament)
         {
             if (ModelState.IsValid)
             {
-                //TODO add participant
+                db.Tournaments.Add(tournament);
+                db.SaveChanges();
             }
             return View("Index", tournament);
-        }
-
-        [HttpPost]
-        [MultipleButton(Name = "action", Argument = "Start")]
-        public ActionResult Start(Tournament tournament)
-        {
-            if (ModelState.IsValid)
-            {
-                //TODO start tournament
-            }
-            return View(tournament);
         }
     }
 }

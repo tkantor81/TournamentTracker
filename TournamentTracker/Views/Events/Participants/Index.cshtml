@@ -1,0 +1,54 @@
+﻿@model TournamentTracker.Models.Tournament
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Participants</h2>
+
+<div class="form-horizontal">
+    <hr />
+    @Html.Label("People", "People", htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.DropDownList("People", Model.PersonList, htmlAttributes: new { @class = "form-control" })
+        <button type="button" id="addParticipant" class="btn btn-default">Add participant</button>
+    </div>
+</div>
+
+<div id="participants">
+    @Html.Partial("_Participants", Model.Participants)
+</div>
+
+@section scripts {
+    <script>
+        $(function () {
+            $("#addParticipant").click(function () {
+                $.ajax({
+                    url: "/Participants/AddParticipant?personID=" + $("#People").val(),
+                    type: "GET",
+                    success: function (data) {
+                        $("#participants").html(data);
+                    },
+                    error: function () {
+                        alert("Error");
+                    }
+                });
+            });
+
+            // Attach the event handler for the selector, now and in the future
+            $(document).on("click", ".deleteParticipant", {}, function (event) {
+                event.preventDefault();
+                $.ajax({
+                    url: "/Participants/DeleteParticipant?participantID=" + $(this).attr("data-ID"),
+                    type: "GET",
+                    success: function (data) {
+                        $("#participants").html(data);
+                    },
+                    error: function () {
+                        alert("Error");
+                    }
+                });
+            });
+        });
+    </script>
+}

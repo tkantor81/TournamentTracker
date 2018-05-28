@@ -18,6 +18,7 @@ namespace TournamentTracker.Helpers
         public CustomLocationViewEngine()
         {
             ViewLocationFormats = ViewLocationFormats.Union(Locations).ToArray();
+            PartialViewLocationFormats = PartialViewLocationFormats.Union(Locations).ToArray();
         }
     }
 }
