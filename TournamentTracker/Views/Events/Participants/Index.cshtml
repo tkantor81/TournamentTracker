@@ -6,23 +6,41 @@
 
 <h2>Participants</h2>
 
-<div class="form-horizontal">
-    <hr />
-    @Html.Label("People", "People", htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-10">
-        @Html.DropDownList("People", Model.PersonList, htmlAttributes: new { @class = "form-control" })
-        <button type="button" id="addParticipant" class="btn btn-default">Add participant</button>
-    </div>
-</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
-<div id="participants">
-    @Html.Partial("_Participants", Model.Participants)
-</div>
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            @Html.Label("People", "People", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10 input-group">
+                @Html.DropDownList("People", Model.PersonList, htmlAttributes: new { @class = "form-control" })
+                <div class="input-group-append">
+                    <button type="button" id="addParticipant" class="btn btn-default">Add</button>
+                </div>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <div id="participants" class="col-md-offset-2">
+                @Html.Partial("_Participants", Model.Participants)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2">
+                <input type="submit" value="Start tournament" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
 
 @section scripts {
     <script>
         $(function () {
-            $("#addParticipant").click(function () {
+            $("#addParticipant").click(function (event) {
+                event.preventDefault();
                 $.ajax({
                     url: "/Participants/AddParticipant?personID=" + $("#People").val(),
                     type: "GET",
@@ -37,6 +55,7 @@
 
             // Attach the event handler for the selector, now and in the future
             $(document).on("click", ".deleteParticipant", {}, function (event) {
+                event.preventDefault();
                 $.ajax({
                     url: "/Participants/DeleteParticipant?participantID=" + $(this).attr("data-ID"),
                     type: "GET",
