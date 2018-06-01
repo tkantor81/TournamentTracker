@@ -17,7 +17,7 @@ namespace TournamentTracker.Controllers.Events
         // GET: Participants
         public ActionResult Index()
         {
-            Tournament tournament = Tournament.Get();
+            Tournament tournament = Tracker.GetTournament();
             return View(tournament);
         }
 
@@ -47,9 +47,9 @@ namespace TournamentTracker.Controllers.Events
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tournament tournament = Tournament.Get();
+            Tournament tournament = Tracker.GetTournament();
             tournament.AddParticipant((int)personID);
-            return PartialView("_Participants", tournament.Participants);
+            return PartialView("_Participants", tournament.GetParticipants());
         }
 
         public ActionResult DeleteParticipant(int? participantID)
@@ -58,9 +58,9 @@ namespace TournamentTracker.Controllers.Events
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tournament tournament = Tournament.Get();
+            Tournament tournament = Tracker.GetTournament();
             tournament.DeleteParticipant((int)participantID);
-            return PartialView("_Participants", tournament.Participants);
+            return PartialView("_Participants", tournament.GetParticipants());
         }
 
         protected override void Dispose(bool disposing)

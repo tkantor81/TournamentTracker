@@ -43,5 +43,9 @@ namespace TournamentTracker.Models
         public System.Data.Entity.DbSet<TournamentTracker.Models.Tournament> Tournaments { get; set; }
 
         public System.Data.Entity.DbSet<TournamentTracker.Models.Participant> Participants { get; set; }
+
+        public System.Data.Entity.DbSet<TournamentTracker.Models.Round> Rounds { get; set; }
+
+        public System.Data.Entity.DbSet<TournamentTracker.Models.Match> Matches { get; set; }
     }
 }

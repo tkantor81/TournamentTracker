@@ -197,6 +197,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Events\ParticipantsController.cs" />
+    <Compile Include="Controllers\Events\RoundsController.cs" />
     <Compile Include="Controllers\Events\TournamentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -245,6 +246,14 @@
     <Compile Include="Migrations\201805272143233_AlterTournament2.Designer.cs">
       <DependentUpon>201805272143233_AlterTournament2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805291413197_AddRounds.cs" />
+    <Compile Include="Migrations\201805291413197_AddRounds.Designer.cs">
+      <DependentUpon>201805291413197_AddRounds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805291849548_AddMatches.cs" />
+    <Compile Include="Migrations\201805291849548_AddMatches.Designer.cs">
+      <DependentUpon>201805291849548_AddMatches.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Format.cs" />
@@ -259,6 +268,7 @@
     <Compile Include="Models\Tier.cs" />
     <Compile Include="Models\Tournament.cs" />
     <Compile Include="Helpers\MultipleButtonAttribute.cs" />
+    <Compile Include="Models\Tracker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -353,6 +363,7 @@
     <Content Include="Views\Events\Participants\_Participants.cshtml" />
     <Content Include="Views\Events\Participants\Details.cshtml" />
     <Content Include="Views\Events\Participants\Index.cshtml" />
+    <Content Include="Views\Events\Rounds\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -397,6 +408,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805272143233_AlterTournament2.resx">
       <DependentUpon>201805272143233_AlterTournament2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805291413197_AddRounds.resx">
+      <DependentUpon>201805291413197_AddRounds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805291849548_AddMatches.resx">
+      <DependentUpon>201805291849548_AddMatches.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -9,6 +9,13 @@ using System.Web.Mvc;
 
 namespace TournamentTracker.Models
 {
+    public enum States
+    {
+        New,
+        Running,
+        Finished
+    }
+
     public class Tournament
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -19,14 +26,6 @@ namespace TournamentTracker.Models
             StructureList = db.Structures.Select(x => new SelectListItem { Value = x.ID.ToString(), Text = x.Name });
             FormatList = db.Formats.Select(x => new SelectListItem { Value = x.ID.ToString(), Text = x.Name });
             PersonList = db.People.Select(x => new SelectListItem { Value = x.ID.ToString(), Text = x.FirstName + " " + x.LastName + " (" + x.Email + ")" });
-            Participants = new List<Participant>();
-        }
-
-        public enum States
-        {
-            New,
-            Running,
-            Finished
         }
 
         public int ID { get; set; }
@@ -55,27 +54,9 @@ namespace TournamentTracker.Models
         public IEnumerable<SelectListItem> FormatList { get; set; }
         public IEnumerable<SelectListItem> PersonList { get; set; }
 
-        public List<Participant> Participants { get; set; }
-
-        public static Tournament Get()
+        public List<Participant> GetParticipants()
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-
-            Tournament tournament = db.Tournaments.Where(t => t.State != Tournament.States.Finished).SingleOrDefault();
-            if (tournament == null)
-            {
-                return new Tournament();
-            }
-            tournament.Participants = db.Participants.Where(p => p.TournamentID == tournament.ID).ToList();
-            foreach (var participant in tournament.Participants)
-            {
-                participant.Person = db.People.Find(participant.PersonID);
-                if (participant.Person == null)
-                {
-                    // Error HttpNotFound()
-                }
-            }
-            return tournament;
+            return db.Participants.Include("Person").Where(p => p.TournamentID == ID).ToList();
         }
 
         public void AddParticipant(int personID)
@@ -85,6 +66,7 @@ namespace TournamentTracker.Models
             {
                 // Error HttpNotFound()
             }
+
             var participant = new Participant()
             {
                 TournamentID = ID,
@@ -92,7 +74,6 @@ namespace TournamentTracker.Models
             };
             db.Participants.Add(participant);
             db.SaveChanges();
-            Participants.Add(participant);
         }
 
         public void DeleteParticipant(int participantID)
@@ -102,9 +83,27 @@ namespace TournamentTracker.Models
             {
                 // Error HttpNotFound()
             }
+
             db.Participants.Remove(participant);
             db.SaveChanges();
-            Participants.Remove(Participants.Find(p => p.ID == participantID));
+        }
+
+        public Round GetRound(int number)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+
+            Round round = db.Rounds.Where(r => r.TournamentID == ID && r.Number == number).SingleOrDefault();
+            if (round == null)
+            {
+                round = new Round()
+                {
+                    TournamentID = ID,
+                    Number = number
+                };
+                round.CreateMatches();
+            }
+
+            return round;
         }
     }
 }

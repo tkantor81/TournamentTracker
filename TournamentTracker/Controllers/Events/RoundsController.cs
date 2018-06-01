@@ -1,35 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using TournamentTracker.Helpers;
 using TournamentTracker.Models;
 
 namespace TournamentTracker.Controllers.Events
 {
-    public class TournamentController : Controller
+    public class RoundsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Tournament
+        // GET: Rounds
         public ActionResult Index()
         {
             Tournament tournament = Tracker.GetTournament();
-            return View(tournament);
+            Round round = tournament.GetRound(1);
+            return View(round);
         }
 
-        [HttpPost]
-        [MultipleButton(Name = "action", Argument = "Create")]
-        public ActionResult Create(Tournament tournament)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Tournaments.Add(tournament);
-                db.SaveChanges();
-            }
-            return View("Index", tournament);
-        }
+        //[HttpPost]
+        //public ActionResult Index(Round round)
+        //{
+        //    return View(round);
+        //}
 
         protected override void Dispose(bool disposing)
         {
