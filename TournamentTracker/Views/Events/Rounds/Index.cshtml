@@ -4,48 +4,56 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Round 1</h2>
+<h2>Round @Model.Number</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayName("Player 1")
-        </th>
-        <th>
-            @Html.DisplayName("Player 2")
-        </th>
-        <th>
-            @Html.DisplayName("Score 1")
-        </th>
-        <th>
-            @Html.DisplayName("Score 2")
-        </th>
-        <th></th>
-    </tr>
-    @foreach (var match in Model.GetOrCreateMatches()) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => match.Player1.Person.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => match.Player2.Person.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => match.Score1)
-            </td>                                                 
-            <td>                                                  
-                @Html.DisplayFor(modelItem => match.Score2)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = match.ID })
-            </td>
-        </tr>
-    }
-</table>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
-<div class="form-group">
-    <div class="col-md-offset-2">
-        <button type="button" id="previous" class="btn btn-default">Previous</button>
-        <button type="button" id="next" class="btn btn-default">Next</button>
+    <div class="form-horizontal">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayName("Player 1")
+                </th>
+                <th>
+                    @Html.DisplayName("Player 2")
+                </th>
+                <th>
+                    @Html.DisplayName("Score 1")
+                </th>
+                <th>
+                    @Html.DisplayName("Score 2")
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var match in Model.GetOrCreateMatches())
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => match.Player1.Person.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => match.Player2.Person.FullName)
+                    </td>
+                    <td>
+                        @Html.EditorFor(modelItem => match.Score1, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                    <td>
+                        @Html.EditorFor(modelItem => match.Score2, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = match.ID })
+                    </td>
+                </tr>
+            }
+        </table>
+
+        <div class="form-group">
+            <div class="col-md-offset-2">
+                <input type="submit" name="action:Previous" value="Previous" class="btn btn-default" />
+                <input type="submit" name="action:Next" value="Next" class="btn btn-default" />
+            </div>
+        </div>
     </div>
-</div>
+}

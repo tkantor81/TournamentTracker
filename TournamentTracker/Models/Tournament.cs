@@ -67,7 +67,7 @@ namespace TournamentTracker.Models
                 // Error HttpNotFound()
             }
 
-            var participant = new Participant()
+            var participant = new Player()
             {
                 TournamentID = ID,
                 Person = person
@@ -89,7 +89,9 @@ namespace TournamentTracker.Models
 
         public Round GetOrCreateRound(int number)
         {
-            Round round = db.Rounds.Include("Tournament").Where(r => r.TournamentID == ID && r.Number == number).SingleOrDefault();
+            Round round = db.Rounds.Include("Tournament")
+                                   .Where(r => r.TournamentID == ID && r.Number == number)
+                                   .SingleOrDefault();
             if (round == null)
             {
                 round = new Round()

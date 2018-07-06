@@ -19,7 +19,7 @@ namespace TournamentTracker.Models
         public int Score2 { get; set; }
 
         public Round Round { get; set; }
-        public Participant Player1 { get; set; }
-        public Participant Player2 { get; set; }
+        public Player Player1 { get; set; }
+        public Player Player2 { get; set; }
     }
 }

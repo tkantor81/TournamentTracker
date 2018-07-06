@@ -254,6 +254,10 @@
     <Compile Include="Migrations\201805291849548_AddMatches.Designer.cs">
       <DependentUpon>201805291849548_AddMatches.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807061935091_AlterMatch.cs" />
+    <Compile Include="Migrations\201807061935091_AlterMatch.Designer.cs">
+      <DependentUpon>201807061935091_AlterMatch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Format.cs" />
@@ -262,6 +266,7 @@
     <Compile Include="Models\Match.cs" />
     <Compile Include="Models\Participant.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Round.cs" />
     <Compile Include="Models\Structure.cs" />
@@ -414,6 +419,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805291849548_AddMatches.resx">
       <DependentUpon>201805291849548_AddMatches.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807061935091_AlterMatch.resx">
+      <DependentUpon>201807061935091_AlterMatch.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
