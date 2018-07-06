@@ -11,18 +11,18 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var participant in Model)
     {
         <tr>
             <td>
-                @Html.Raw(item.Person.FirstName + " " + item.Person.LastName)
+                @Html.Raw(participant.Person.FullName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Person.Email)
+                @Html.DisplayFor(modelItem => participant.Person.Email)
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                <button type="button" class="btn btn-default deleteParticipant" data-ID="@item.ID">Delete</button>
+                @Html.ActionLink("Details", "Details", new { id = participant.ID }) |
+                <button type="button" class="btn btn-default deleteParticipant" data-ID="@participant.ID">Delete</button>
             </td>
         </tr>
     }

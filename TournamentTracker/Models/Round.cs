@@ -18,16 +18,31 @@ namespace TournamentTracker.Models
         public States State { get; set; } = States.New;
 
         public Tournament Tournament { get; set; }
-
-        public List<Match> GetMatches()
+        
+        public List<Match> GetOrCreateMatches()
         {
-            return db.Matches.Where(m => m.RoundID == ID).ToList();
+            // TODO Test participants are included
+            List<Match> matches = db.Matches.Include("Player1").Include("Player2").Where(m => m.RoundID == ID).ToList();
+            if (matches.Count == 0)
+            {
+                matches = CreatePairings();
+                db.Matches.AddRange(matches);
+                db.SaveChanges();
+
+            }
+            return matches;
         }
 
-        public List<Match> CreateMatches()
+        private List<Match> CreatePairings()
         {
-
-            return new List<Match>();
+            var matches = new List<Match>();
+            List<Participant> participants = Tournament.GetParticipants();
+            
+            // TODO Get participant standings
+            
+            var match = new Match() { RoundID = ID, Player1ID = 109, Player2ID = 110 };
+            matches.Add(match);
+            return matches;
         }
     }
 }

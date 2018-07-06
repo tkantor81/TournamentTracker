@@ -21,15 +21,15 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var structure in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.DisplayFor(modelItem => structure.Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Edit", "Edit", new { id=structure.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=structure.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=structure.ID })
         </td>
     </tr>
 }

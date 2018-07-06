@@ -22,15 +22,15 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var format in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.DisplayFor(modelItem => format.Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Edit", "Edit", new { id=format.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=format.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=format.ID })
         </td>
     </tr>
 }

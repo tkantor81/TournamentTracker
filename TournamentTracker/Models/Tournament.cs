@@ -22,10 +22,10 @@ namespace TournamentTracker.Models
 
         public Tournament()
         {
-            TierList = db.Tiers.Select(x => new SelectListItem { Value = x.ID.ToString(), Text = x.Name });
-            StructureList = db.Structures.Select(x => new SelectListItem { Value = x.ID.ToString(), Text = x.Name });
-            FormatList = db.Formats.Select(x => new SelectListItem { Value = x.ID.ToString(), Text = x.Name });
-            PersonList = db.People.Select(x => new SelectListItem { Value = x.ID.ToString(), Text = x.FirstName + " " + x.LastName + " (" + x.Email + ")" });
+            TierList = db.Tiers.Select(t => new SelectListItem { Value = t.ID.ToString(), Text = t.Name });
+            StructureList = db.Structures.Select(s => new SelectListItem { Value = s.ID.ToString(), Text = s.Name });
+            FormatList = db.Formats.Select(f => new SelectListItem { Value = f.ID.ToString(), Text = f.Name });
+            PersonList = db.People.Select(p => new SelectListItem { Value = p.ID.ToString(), Text = p.FirstName + " " + p.LastName + " (" + p.Email + ")" });
         }
 
         public int ID { get; set; }
@@ -83,16 +83,13 @@ namespace TournamentTracker.Models
             {
                 // Error HttpNotFound()
             }
-
             db.Participants.Remove(participant);
             db.SaveChanges();
         }
 
-        public Round GetRound(int number)
+        public Round GetOrCreateRound(int number)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-
-            Round round = db.Rounds.Where(r => r.TournamentID == ID && r.Number == number).SingleOrDefault();
+            Round round = db.Rounds.Include("Tournament").Where(r => r.TournamentID == ID && r.Number == number).SingleOrDefault();
             if (round == null)
             {
                 round = new Round()
@@ -100,9 +97,9 @@ namespace TournamentTracker.Models
                     TournamentID = ID,
                     Number = number
                 };
-                round.CreateMatches();
+                db.Rounds.Add(round);
+                db.SaveChanges();
             }
-
             return round;
         }
     }

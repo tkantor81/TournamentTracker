@@ -18,15 +18,9 @@ namespace TournamentTracker.Controllers.Events
         public ActionResult Index()
         {
             Tournament tournament = Tracker.GetTournament();
-            Round round = tournament.GetRound(1);
+            Round round = tournament.GetOrCreateRound(1);
             return View(round);
         }
-
-        //[HttpPost]
-        //public ActionResult Index(Round round)
-        //{
-        //    return View(round);
-        //}
 
         protected override void Dispose(bool disposing)
         {
